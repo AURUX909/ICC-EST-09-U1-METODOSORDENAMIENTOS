@@ -7,7 +7,6 @@ public class App {
         Scanner leer = new Scanner(System.in);
         int opcion = 0;
         int[] arreglo = null;
-
         while (true) {
             System.out.println("Bienvenido al programa de metodos");
             System.out.println("Menu Principal");
@@ -15,18 +14,16 @@ public class App {
             System.out.println("2. Ordenar arreglo");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
-            
+           
             while (!leer.hasNextInt()) {
                 System.out.println("Por favor, ingrese un número válido.");
                 leer.next(); // Descarta la entrada inválida
             }
             opcion = leer.nextInt();
-
             if (opcion < 0) {
                 System.out.println("Por favor, ingrese un número no negativo.");
                 continue;
             }
-
             switch (opcion) {
                 case 1:
                     System.out.print("Ingrese el tamaño de su arreglo: ");
@@ -72,7 +69,6 @@ public class App {
                         leer.next(); // Descarta la entrada inválida
                     }
                     metodoOpcion = leer.nextInt();
-
                     System.out.println("Seleccione el orden:");
                     System.out.println("1. Ascendente");
                     System.out.println("2. Descendente");
@@ -83,7 +79,6 @@ public class App {
                     }
                     ordenOpcion = leer.nextInt();
                     boolean ascendente = (ordenOpcion == 1);
-
                     System.out.println("¿Quiere ver los pasos intermedios?");
                     System.out.println("1. Sí");
                     System.out.println("2. No");
@@ -94,20 +89,19 @@ public class App {
                     }
                     verPasosOpcion = leer.nextInt();
                     boolean mostrarPasos = (verPasosOpcion == 1);
-
                     // Llamar al método de ordenamiento correspondiente
                     switch (metodoOpcion) {
                         case 1: // Método Burbuja
-                            arreglo = ordenamientoOpcion.sortByBubble(arreglo, mostrarPasos);
+                            arreglo = ordenamientoOpcion.sortByBubble(arreglo, ascendente, mostrarPasos);
                             break;
                         case 2: // Método Selección
                             arreglo = ordenamientoOpcion.selectionSort(arreglo, ascendente, mostrarPasos);
                             break;
                         case 3: // Método Inserción
-                            arreglo = ordenamientoOpcion.insertionSort(arreglo, mostrarPasos);
+                            arreglo = ordenamientoOpcion.insertionSort(arreglo, ascendente, mostrarPasos);
                             break;
                         case 4: // Método Burbuja Mejorado
-                            arreglo = ordenamientoOpcion.sortByBubbleAjuste(arreglo, mostrarPasos);
+                            arreglo = ordenamientoOpcion.sortByBubbleAjuste(arreglo, ascendente, mostrarPasos);
                             break;
                         default:
                             System.out.println("Opción no válida.");
